@@ -1,0 +1,49 @@
+﻿@model CRUD_Basic.StudentData
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>StudentData</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentFees)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentFees)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentHomeCity)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentHomeCity)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

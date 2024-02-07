@@ -1,0 +1,43 @@
+﻿@model CRUD_Basic.StudentData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>StudentData</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentName)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentFees)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentFees)
+                </dd>
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StudentHomeCity)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StudentHomeCity)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.StudentId })" class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+</p>

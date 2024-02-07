@@ -7,39 +7,47 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentFees)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentHomeCity)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentFees)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentHomeCity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Student Name
+                </th>
+                <th>
+                    Student Fees
+                </th>
+                <th>
+                    Student Home City
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentFees)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentHomeCity)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.StudentId })" class="btn btn-info">Edit</a>
+                        <a href="@Url.Action("Details", new { id = item.StudentId })" class="btn btn-secondary">Details</a>
+                        <a href="@Url.Action("Delete", new { id = item.StudentId })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

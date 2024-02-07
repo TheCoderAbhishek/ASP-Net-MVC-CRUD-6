@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
 
@@ -6,7 +7,8 @@ namespace CRUD_Basic.Controllers
 {
     public class HomeController : Controller
     {
-        MVCDBContext _MVCDBContext = new MVCDBContext();
+        private MVCDBContext _MVCDBContext = new MVCDBContext();
+
         public ActionResult Index()
         {
             var listOfStudents = _MVCDBContext.StudentDatas.ToList();
@@ -25,7 +27,7 @@ namespace CRUD_Basic.Controllers
             _MVCDBContext.StudentDatas.Add(studentData);
             _MVCDBContext.SaveChanges();
             ViewBag.Message = "Data successfully inserted.";
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -57,7 +59,7 @@ namespace CRUD_Basic.Controllers
 
         public ActionResult Delete(int id)
         {
-            var tableData = _MVCDBContext.StudentDatas.Where(x => x.StudentId == id).FirstOrDefault(x => x.StudentId == id);
+            var tableData = _MVCDBContext.StudentDatas.Where(x => x.StudentId == id).FirstOrDefault();
             _MVCDBContext.StudentDatas.Remove(tableData);
             _MVCDBContext.SaveChanges();
             ViewBag.Message = "Record Delete Successfully.";
